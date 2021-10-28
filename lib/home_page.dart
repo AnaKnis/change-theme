@@ -16,18 +16,12 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Home Page"),
+        actions: [
+          CustomSwitch()
+        ],
       ),
       body: Center(
-        child: Switch(
-          value: AppController.instance.isDartTheme,
-          onChanged: (value) {
-            setState(
-              () {
-                AppController.instance.changeTheme();
-              },
-            );
-          },
-        ),
+        child: CustomSwitch()
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
@@ -36,3 +30,18 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+class CustomSwitch extends StatelessWidget {
+  const CustomSwitch({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Switch(
+      value: AppController.instance.isDartTheme,
+      onChanged: (value) {
+        AppController.instance.changeTheme();
+      },
+    );
+  }
+}
+
