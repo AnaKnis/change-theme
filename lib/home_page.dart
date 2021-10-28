@@ -20,12 +20,27 @@ class _HomePageState extends State<HomePage> {
           CustomSwitch()
         ],
       ),
-      body: Center(
-        child: CustomSwitch()
+      body: Container(
+        padding: EdgeInsets.all(20.0),
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text("Contador: $counter",
+              style: TextStyle(fontSize: 20.0),
+            ),
+            SizedBox(height: 10),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          setState(() {
+            counter++;
+          });
+        },
       ),
     );
   }
